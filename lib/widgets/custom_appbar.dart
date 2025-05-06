@@ -23,26 +23,30 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final bodyStyle = theme.textTheme.bodyMedium;
+    final smallText = bodyStyle?.copyWith(fontSize: 12);
+    final labelStyle = theme.textTheme.labelLarge;
+
     return PreferredSize(
       preferredSize: const Size.fromHeight(100),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         color: AppColors.darkCard,
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // Column 1: G badge
             Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CircleAvatar(
-                  backgroundColor: Colors.grey[800],
+                  backgroundColor: const Color(0xFF3A3A3A),
                   radius: 20,
-                  child: const Text(
+                  child: Text(
                     "G",
-                    style: TextStyle(
+                    style: labelStyle?.copyWith(
                       color: Colors.white,
-                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
@@ -54,40 +58,50 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             // Column 2: Greeting, phone number, explore
             Expanded(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Y'ello, $userName",
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
+                  RichText(
+                    text: TextSpan(
+                      style: bodyStyle?.copyWith(
+                        color: Colors.white,
+                        fontSize: 14,
+                      ),
+                      children: [
+                        TextSpan(
+                          text: "Y'ello, ",
+                          style: bodyStyle?.copyWith(
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic,
+                            color: Colors.white,
+                          ),
+                        ),
+                        TextSpan(
+                          text: userName,
+                          style: bodyStyle?.copyWith(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   Text(
                     phoneNumber,
-                    style: TextStyle(
-                      color: Colors.grey[500],
-                      fontSize: 12,
-                    ),
                   ),
                   const SizedBox(height: 4),
                   GestureDetector(
                     onTap: onExplorePrestigePressed,
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
-                      children: const [
-                        Icon(Icons.star, color: Colors.white, size: 16),
-                        SizedBox(width: 4),
+                      children: [
+                        const Icon(Icons.star, color: Colors.white, size: 16),
+                        const SizedBox(width: 4),
                         Text(
                           "Explore Prestige",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                          ),
+                          style: smallText?.copyWith(color: Colors.white),
                         ),
-                        SizedBox(width: 4),
-                        Icon(Icons.arrow_forward_ios, size: 10, color: Colors.white),
+                        const SizedBox(width: 4),
+                        const Icon(Icons.arrow_forward_ios, size: 10, color: Colors.white),
                       ],
                     ),
                   ),
@@ -95,71 +109,105 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
 
-            // Column 3: Search + notifications, then ₦****
+            // Column 3: Actions (search + notification + balance)
             Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.end, // Aligns the row's children to the right
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    IconButton(
-                      icon: const Icon(Icons.search, color: Colors.white),
-                      onPressed: onSearchPressed,
-                    ),
-                    Stack(
-                      alignment: Alignment.topRight,
-                      children: [
-                        IconButton(
-                          icon: const Icon(Icons.notifications, color: Colors.white),
-                          onPressed: onNotificationsPressed,
-                        ),
-                        if (notificationCount > 0)
-                          Positioned(
-                            right: 6,
-                            top: 6,
-                            child: Container(
-                              padding: const EdgeInsets.all(2),
-                              decoration: BoxDecoration(
-                                color: Colors.yellow[700],
-                                shape: BoxShape.circle,
-                              ),
-                              constraints: const BoxConstraints(minWidth: 16, minHeight: 16),
-                              child: Text(
-                                notificationCount.toString(),
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
+                    // Container that wraps both icons to control their positioning
+                    Container(
+                      padding: EdgeInsets.zero, // No padding around the icons
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end, // Aligns the icons to the right within the container
+                        children: [
+                          // Search icon with increased size
+                          IconButton(
+                            icon: const Icon(
+                              Icons.search,
+                              color: Colors.white,
+                              size: 25, // Set the size to the desired value (e.g., 30)
                             ),
+                            padding: EdgeInsets.zero, // No padding around the icon
+                            constraints: const BoxConstraints(),
+                            onPressed: onSearchPressed,
                           ),
-                      ],
+                          Stack(
+                            alignment: Alignment.topRight,
+                            children: [
+                              // Notification icon with increased size
+                              IconButton(
+                                icon: const Icon(
+                                  Icons.notifications_outlined,
+                                  color: Colors.white,
+                                  size: 25, // Set the size to the desired value (e.g., 30)
+                                ),
+                                padding: EdgeInsets.zero, // No padding around the icon
+                                constraints: const BoxConstraints(),
+                                onPressed: onNotificationsPressed,
+                              ),
+                              if (notificationCount > 0)
+                                Positioned(
+                                  right: 4,
+                                  top: 4,
+                                  child: Container(
+                                    padding: const EdgeInsets.all(2),
+                                    decoration: BoxDecoration(
+                                      color: Colors.yellow[700],
+                                      shape: BoxShape.circle,
+                                    ),
+                                    constraints: const BoxConstraints(minWidth: 16, minHeight: 16),
+                                    child: Text(
+                                      notificationCount.toString(),
+                                      style: smallText?.copyWith(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 10,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
                 GestureDetector(
                   onTap: onProfilePressed,
                   child: Container(
-                    margin: const EdgeInsets.only(top: 4),
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
                     decoration: BoxDecoration(
-                      color: Colors.grey[800],
+                      color: const Color(0xFF27262B),
                       borderRadius: BorderRadius.circular(20),
+                      border: Border.all( // Add this for white outline
+                        color: Colors.white,
+                        width: 1.0,
+                      ),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
-                      children: const [
+                      children: [
+                        const Icon(Icons.account_balance_wallet, color: Colors.white, size: 16),
+                        const SizedBox(width: 4),
                         Text(
                           "₦********",
-                          style: TextStyle(color: Colors.white, fontSize: 13),
+                          style: smallText?.copyWith(
+                            color: Colors.white,
+                            fontSize: 13,
+                          ),
                         ),
-                        SizedBox(width: 4),
-                        Icon(Icons.visibility, color: Colors.white, size: 16),
+                        const SizedBox(width: 4),
+                        const Icon(Icons.visibility, color: Colors.white, size: 16),
                       ],
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ],

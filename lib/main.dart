@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_mtn_app_clone/theme/app_theme.dart';
 import 'package:my_mtn_app_clone/widgets/custom_appbar.dart';
+import 'package:my_mtn_app_clone/widgets/custom_curved_bottomnav.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,16 +21,29 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  // int _selectedIndex = 0;
+
+  // void _onItemTapped(int index){
+  //   setState(() {
+  //     _selectedIndex = index;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: const CustomAppBar(
-            userName: "GreatGrant",
-            phoneNumber: '080123456789',
+            userName: "Great Grant",
+            phoneNumber: '08012345678',
             notificationCount: 2
         ),
         body: SingleChildScrollView(
@@ -86,15 +100,39 @@ class MyHomePage extends StatelessWidget {
             ],
           ),
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-            BottomNavigationBarItem(icon: Icon(Icons.play_arrow), label: "Play"),
-            BottomNavigationBarItem(icon: Icon(Icons.store), label: "Marketplace"),
-            BottomNavigationBarItem(icon: Icon(Icons.help), label: "Help"),
-            BottomNavigationBarItem(icon: Icon(Icons.more_horiz), label: "More"),
-          ],
-        ),
+        // bottomNavigationBar: CurvedBottomNavigationBar(
+        //     selectedIndex: _selectedIndex,
+        //     onTap: _onItemTapped,
+        //     items: [
+        //       BottomNavigationBarItem(
+        //         icon: Icon(Icons.home),
+        //         label: "Home",
+        //       ),
+        //       BottomNavigationBarItem(
+        //         icon: Icon(Icons.play_arrow),
+        //         label: "Play",
+        //       ),
+        //       BottomNavigationBarItem(
+        //         icon: Icon(Icons.store),
+        //         label: "Marketplace",
+        //         activeIcon: Container(
+        //           padding: EdgeInsets.all(8),
+        //           decoration: BoxDecoration(
+        //             color: Colors.yellow[700],
+        //             shape: BoxShape.circle,
+        //           ),
+        //           child: Icon(Icons.store, color: Colors.black),
+        //         ),
+        //       ),
+        //       BottomNavigationBarItem(
+        //         icon: Icon(Icons.help),
+        //         label: "Help",
+        //       ),
+        //       BottomNavigationBarItem(
+        //         icon: Icon(Icons.more_horiz),
+        //         label: "More",
+        //       ),
+        //     ])
       ),
     );
   }

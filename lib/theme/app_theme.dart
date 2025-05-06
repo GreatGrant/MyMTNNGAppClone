@@ -111,7 +111,7 @@ ThemeData buildLightAppTheme() {
       selectionColor: AppColors.yellow200,
       selectionHandleColor: AppColors.yellow700,
     ),
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.lightBackground,
       elevation: 0,
       titleTextStyle: TextStyle(
@@ -192,6 +192,6 @@ ThemeData buildLightAppTheme() {
         ),
       ),
     ),
-    iconTheme: IconThemeData(color: AppColors.lightIcon),
+    iconTheme: const IconThemeData(color: AppColors.lightIcon),
   );
 }
