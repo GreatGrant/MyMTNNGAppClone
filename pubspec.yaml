@@ -58,6 +58,16 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  fonts:
+    - family: MTNBrighterSans
+      fonts:
+        - asset: assets/fonts/MTNBrighterSans-Bold.ttf
+        - asset: assets/fonts/MTNBrighterSans-BoldItalic.ttf
+        - asset: assets/fonts/MTNBrighterSans-ExtraBold.ttf
+        - asset: assets/fonts/MTNBrighterSans-ExtraLight.ttf
+        - asset: assets/fonts/MTNBrighterSans-Light.ttf
+        - asset: assets/fonts/MTNBrighterSans-Medium.ttf
+        - asset: assets/fonts/MTNBrighterSans-Regular.ttf
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
