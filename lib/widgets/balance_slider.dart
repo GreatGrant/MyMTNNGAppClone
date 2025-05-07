@@ -30,7 +30,7 @@ class SliderItem extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(phoneNumber, style: const TextStyle(fontSize: 12)),
+                Text(phoneNumber, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white)),
                 Row(
                   children: const [
                     Text('Account', style: TextStyle(fontSize: 12)),
@@ -46,12 +46,12 @@ class SliderItem extends StatelessWidget {
 
           // Middle Section with manual padding
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
+            padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
             child: Row(
               children: [
                 Expanded(
                   child: BalanceColumn(
-                    icon: Icons.phone,
+                    icon: Icons.phone_outlined,
                     label: 'Airtime Balance',
                     value: '₦2.91',
                     bonus: '₦0',
@@ -132,9 +132,9 @@ class BalanceColumn extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(icon, size: 16, color: Colors.red),
+              Icon(icon, size: 16, color: Colors.white),
               const SizedBox(width: 4),
-              Text(label, style: const TextStyle(fontSize: 12)),
+              Text(label, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
             ],
           ),
           const SizedBox(height: 4),
@@ -144,28 +144,28 @@ class BalanceColumn extends StatelessWidget {
             text: TextSpan(
               style: Theme.of(context).textTheme.labelSmall?.copyWith(color: Colors.black87),
               children: [
-                const TextSpan(text: 'Bonus: '),
-                TextSpan(text: bonus, style: const TextStyle(fontWeight: FontWeight.bold)),
+                const TextSpan(text: 'Bonus: ', style: TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.w300)),
+                TextSpan(text: bonus, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white)),
               ],
             ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 4),
           ElevatedButton.icon(
             onPressed: onPressed,
-            icon: const Icon(Icons.shopping_cart, size: 14, color: Colors.black),
+            icon: const Icon(Icons.shopping_cart, size: 14, color: Colors.white),
             label: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(buttonLabel,
-                  style: const TextStyle(color: Colors.black, fontSize: 11),
+                  style: const TextStyle(color: Color(0xFFFFCB05), fontSize: 11),
                 ),
                 const SizedBox(width: 4),
                 const Icon(Icons.arrow_forward_ios, size: 10, color: Colors.black),
               ],
             ),
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFFFFCB05),
-              foregroundColor: Colors.black,
+              backgroundColor: Colors.black,
+              foregroundColor: const Color(0xFFFFCB05),
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
@@ -174,6 +174,48 @@ class BalanceColumn extends StatelessWidget {
               elevation: 0,
             ),
           )
+        ],
+      ),
+    );
+  }
+}
+
+class ClickableColumn extends StatelessWidget {
+  final IconData icon;
+  final String text;
+  final VoidCallback onTap;
+
+  const ClickableColumn({
+    required this.icon,
+    required this.text,
+    required this.onTap,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap, // Entire column is clickable
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Icon(
+            icon,
+            size: 24, // Icon size
+            color: Colors.blue, // Icon color
+          ),
+          const SizedBox(height: 4), // Space between icon and text
+          Text(
+            text,
+            style: TextStyle(
+              fontSize: 16,
+              color: Colors.blue, // Text color
+              fontWeight: FontWeight.w500,
+            ),
+            textAlign: TextAlign.center,
+          ),
         ],
       ),
     );
