@@ -40,7 +40,7 @@ class _BalanceSliderState extends State<BalanceSlider> {
             autoPlay: false,
             autoPlayInterval: const Duration(seconds: 4),
             enlargeCenterPage: false, // Don't zoom current card
-            viewportFraction: 0.98, // Show 80% of screen, rest reveals next item
+            viewportFraction: 0.95, // Show 80% of screen, rest reveals next item
             onPageChanged: (index, reason) {
               setState(() => _currentIndex = index);
             },
@@ -199,13 +199,13 @@ class BalanceSliderItemTwo extends StatelessWidget {
         children: [
           // Top Row with manual padding
           Padding(
-            padding: const EdgeInsets.fromLTRB(12, 12, 12, 0),
+            padding: const EdgeInsets.fromLTRB(12, 22, 0, 0),
 
           ),
           Divider(height: 4, color: Colors.grey[700]),
           // Middle Section with manual padding
           Padding(
-            padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+            padding: const EdgeInsets.fromLTRB(12, 18, 12, 0),
             child: Row(
               children: [
                 Expanded(
