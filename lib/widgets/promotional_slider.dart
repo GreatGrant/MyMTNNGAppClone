@@ -41,7 +41,7 @@ class _PromoSliderState extends State<PromoSlider> {
         CarouselSlider.builder(
           options: CarouselOptions(
             height: widget.height,
-            autoPlay: true,
+            autoPlay: false,
             autoPlayInterval: const Duration(seconds: 4),
             enlargeCenterPage: false,
             viewportFraction: 0.85,
