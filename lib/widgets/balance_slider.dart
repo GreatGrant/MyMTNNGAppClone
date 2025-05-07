@@ -135,7 +135,7 @@ class BalanceSliderItem extends StatelessWidget {
                   const SizedBox(width: 8),
                   Expanded(
                     child: BalanceColumn(
-                      icon: Icons.wifi,
+                      icon: Icons.import_export,
                       label: 'Data Balance',
                       value: '20GB',
                       bonus: '19.24GB',
