@@ -72,9 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
               // Balance Section
-              const SliderItem(
-                phoneNumber: "08012345678"),
-
+              const BalanceSlider()
             ],
           ),
         ),

@@ -5,49 +5,66 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/material.dart';
 
-class BalanceSlider extends StatelessWidget {
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import 'package:flutter/material.dart';
+
+import 'package:flutter/material.dart';
+
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
+
+class BalanceSlider extends StatefulWidget {
   const BalanceSlider({super.key});
+
+  @override
+  State<BalanceSlider> createState() => _BalanceSliderState();
+}
+
+class _BalanceSliderState extends State<BalanceSlider> {
+  int _currentIndex = 0;
+
+  final List<Widget> items = const [
+    BalanceSliderItem(phoneNumber: '0801 234 5678'),
+    BalanceSliderItemTwo(), // Now part of the carousel
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // Horizontal Scrollable Slider of Cards
-        SizedBox(
-          height: 250, // Adjust height to fit your card
-          child: PageView(
-            controller: PageController(viewportFraction: 0.9),
-            children: const [
-              SliderItem(phoneNumber: '0801 234 5678'),
-              SliderItem(phoneNumber: '0802 987 6543'),
-            ],
+        CarouselSlider.builder(
+          itemCount: items.length,
+          options: CarouselOptions(
+            autoPlay: false,
+            autoPlayInterval: const Duration(seconds: 4),
+            enlargeCenterPage: false, // Don't zoom current card
+            viewportFraction: 0.98, // Show 80% of screen, rest reveals next item
+            onPageChanged: (index, reason) {
+              setState(() => _currentIndex = index);
+            },
           ),
+          itemBuilder: (context, index, realIndex) => items[index],
         ),
 
-        const SizedBox(height: 20),
+        const SizedBox(height: 8),
 
-        // Row of Clickable Icons
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              ClickableColumn(
-                icon: Icons.history,
-                text: 'History',
-                onTap: () => print('History tapped'),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: List.generate(
+            items.length,
+                (index) => Container(
+              width: 8,
+              height: 8,
+              margin: const EdgeInsets.symmetric(horizontal: 3),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: _currentIndex == index
+                    ? const Color(0xFFFFCB05)
+                    : const Color(0xFF3A3A3A),
               ),
-              ClickableColumn(
-                icon: Icons.share,
-                text: 'Share',
-                onTap: () => print('Share tapped'),
-              ),
-              ClickableColumn(
-                icon: Icons.qr_code,
-                text: 'Scan',
-                onTap: () => print('Scan tapped'),
-              ),
-            ],
+            ),
           ),
         ),
       ],
@@ -55,9 +72,113 @@ class BalanceSlider extends StatelessWidget {
   }
 }
 
-class SliderItem extends StatelessWidget {
+class BalanceSliderItem extends StatelessWidget {
   final String phoneNumber;
-  const SliderItem({required this.phoneNumber, super.key});
+  const BalanceSliderItem({required this.phoneNumber, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center( // Keeps item centered in viewport
+      child: Container(
+        // Removed horizontal margin to avoid overflow from both ends
+        constraints: const BoxConstraints(
+          maxWidth: 350, // Prevent overly wide layout
+        ),
+        decoration: BoxDecoration(
+          color: const Color(0xFF414141),
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 4,
+              offset: Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(12, 8, 0, 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(phoneNumber, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white)),
+                  Row(
+                    children: const [
+                      Text('Account', style: TextStyle(fontSize: 12)),
+                      SizedBox(width: 4),
+                      Icon(Icons.arrow_forward_ios, size: 12),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+
+            Divider(height: 4, color: Colors.grey[700]),
+
+            Padding(
+              padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: BalanceColumn(
+                      icon: Icons.phone_outlined,
+                      label: 'Airtime Balance',
+                      value: '₦2.91',
+                      bonus: '₦0',
+                      buttonLabel: 'Buy Airtime',
+                      onPressed: () => print('Buy Airtime'),
+                    ),
+                  ),
+                  Container(width: 1, height: 110, color: Colors.grey[700]),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: BalanceColumn(
+                      icon: Icons.wifi,
+                      label: 'Data Balance',
+                      value: '20GB',
+                      bonus: '19.24GB',
+                      buttonLabel: 'Buy Data',
+                      onPressed: () => print('Buy Data'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 12),
+
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              width: double.infinity,
+              decoration: const BoxDecoration(
+                color: Color(0xFF8D8D8D),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(12),
+                  bottomRight: Radius.circular(12),
+                ),
+              ),
+              child: Center(
+                child: Text(
+                  'View details',
+                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                    color: Colors.black87,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class BalanceSliderItemTwo extends StatelessWidget {
+  const BalanceSliderItemTwo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -79,48 +200,34 @@ class SliderItem extends StatelessWidget {
           // Top Row with manual padding
           Padding(
             padding: const EdgeInsets.fromLTRB(12, 12, 12, 0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(phoneNumber, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white)),
-                Row(
-                  children: const [
-                    Text('Account', style: TextStyle(fontSize: 12)),
-                    SizedBox(width: 4),
-                    Icon(Icons.arrow_forward_ios, size: 12),
-                  ],
-                ),
-              ],
-            ),
+
           ),
-
           Divider(height: 4, color: Colors.grey[700]),
-
           // Middle Section with manual padding
           Padding(
             padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
             child: Row(
               children: [
                 Expanded(
-                  child: BalanceColumn(
-                    icon: Icons.phone_outlined,
-                    label: 'Airtime Balance',
-                    value: '₦2.91',
-                    bonus: '₦0',
-                    buttonLabel: 'Buy Airtime',
-                    onPressed: () => print('Buy Airtime'),
+                  child: ClickableColumn(
+                    icon: Icons.add,
+                    text: 'Add Number',
+                    onTap: () {
+                      print('Clicked on More Info');
+                      // Add your desired functionality here.
+                    },
                   ),
                 ),
                 Container(width: 1, height: 110, color: Colors.grey[700]),
-                SizedBox(width: 8,),
+                const SizedBox(width: 8,),
                 Expanded(
-                  child: BalanceColumn(
-                    icon: Icons.wifi,
-                    label: 'Data Balance',
-                    value: '20GB',
-                    bonus: '19.24GB',
-                    buttonLabel: 'Buy Data',
-                    onPressed: () => print('Buy Data'),
+                  child: ClickableColumn(
+                    icon: Icons.layers,
+                    text: 'Manage Numbers',
+                    onTap: () {
+                      print('Clicked on More Info');
+                      // Add your desired functionality here.
+                    },
                   ),
                 ),
               ],
@@ -141,14 +248,6 @@ class SliderItem extends StatelessWidget {
               ),
             ),
             child: Center(
-              child: Text(
-                'View details',
-                style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                  color: Colors.black87,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 12
-                ),
-              ),
             ),
           ),
         ],
@@ -273,3 +372,4 @@ class ClickableColumn extends StatelessWidget {
     );
   }
 }
+
