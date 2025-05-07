@@ -71,6 +71,30 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ],
               ),
+              SizedBox(height: 12,),
+              Center(
+                child: InkWell(
+                  onTap: () {
+                    print('Refresh tapped');
+                  },
+                  child: const Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'Refresh Balance',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14,
+                        ),
+                      ),
+                      SizedBox(width: 6),
+                      Icon(Icons.refresh, color: Color(0xFFFFCB05), size: 16),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 12,),
               // Balance Section
               const BalanceSlider()
             ],
