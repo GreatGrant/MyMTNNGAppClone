@@ -204,7 +204,7 @@ class ClickableColumn extends StatelessWidget {
           Icon(
             icon,
             size: 24, // Icon size
-            color: Colors.blue, // Icon color
+            color: const Color(0xFFFFCB05), // Icon color
           ),
           const SizedBox(height: 4), // Space between icon and text
           Text(
