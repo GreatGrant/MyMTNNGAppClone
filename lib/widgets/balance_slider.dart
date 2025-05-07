@@ -210,7 +210,7 @@ class BalanceSliderItemTwo extends StatelessWidget {
               children: [
                 Expanded(
                   child: ClickableColumn(
-                    icon: Icons.add,
+                    icon: Icons.add_circle,
                     text: 'Add Number',
                     onTap: () {
                       print('Clicked on More Info');
@@ -357,15 +357,15 @@ class ClickableColumn extends StatelessWidget {
         children: [
           Icon(
             icon,
-            size: 24, // Icon size
+            size: 34, // Icon size
             color: const Color(0xFFFFCB05), // Icon color
           ),
           const SizedBox(height: 4), // Space between icon and text
           Text(
             text,
             style: TextStyle(
-              fontSize: 16,
-              color: Colors.blue, // Text color
+              fontSize: 14,
+              color: Colors.white, // Text color
               fontWeight: FontWeight.w500,
             ),
             textAlign: TextAlign.center,
