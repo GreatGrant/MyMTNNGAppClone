@@ -89,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                       SizedBox(width: 6),
-                      Icon(Icons.refresh, color: Color(0xFFFFCB05), size: 16),
+                      Icon(Icons.sync, color: Color(0xFFFFCB05), size: 16),
                     ],
                   ),
                 ),
