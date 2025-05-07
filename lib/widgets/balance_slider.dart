@@ -3,6 +3,58 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/material.dart';
 
+import 'package:flutter/material.dart';
+
+class BalanceSlider extends StatelessWidget {
+  const BalanceSlider({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        // Horizontal Scrollable Slider of Cards
+        SizedBox(
+          height: 250, // Adjust height to fit your card
+          child: PageView(
+            controller: PageController(viewportFraction: 0.9),
+            children: const [
+              SliderItem(phoneNumber: '0801 234 5678'),
+              SliderItem(phoneNumber: '0802 987 6543'),
+            ],
+          ),
+        ),
+
+        const SizedBox(height: 20),
+
+        // Row of Clickable Icons
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              ClickableColumn(
+                icon: Icons.history,
+                text: 'History',
+                onTap: () => print('History tapped'),
+              ),
+              ClickableColumn(
+                icon: Icons.share,
+                text: 'Share',
+                onTap: () => print('Share tapped'),
+              ),
+              ClickableColumn(
+                icon: Icons.qr_code,
+                text: 'Scan',
+                onTap: () => print('Scan tapped'),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class SliderItem extends StatelessWidget {
   final String phoneNumber;
   const SliderItem({required this.phoneNumber, super.key});
