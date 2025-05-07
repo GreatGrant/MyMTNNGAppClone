@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_mtn_app_clone/theme/app_theme.dart';
+import 'package:my_mtn_app_clone/widgets/balance_slider.dart';
 import 'package:my_mtn_app_clone/widgets/custom_appbar.dart';
 import 'package:my_mtn_app_clone/widgets/promotional_slider.dart';
 
@@ -71,78 +72,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
               // Balance Section
-              // Card(
-              //   child: Column(
-              //     children: [
-              //       Text("Airtime Balance: ₦2.91 (Bonus: ₦0)"),
-              //       Text("Data Balance: 0 MB (Bonus: 0 MB)"),
-              //       Row(
-              //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //         children: [
-              //           ElevatedButton(child: Text("Buy Airtime"), onPressed: () {}),
-              //           ElevatedButton(child: Text("Buy Data"), onPressed: () {}),
-              //         ],
-              //       ),
-              //       TextButton(child: Text("Refresh Balance"), onPressed: () {}),
-              //       Text("No active data. Buy a bundle to enable rollover", style: TextStyle(color: Colors.red)),
-              //     ],
-              //   ),
-              // ),
-              // Promotional Banner
-              // Navigation Tabs
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //   children: [
-              //     Text("MTN FibreX"), Text("Roaming"), Text("Share"), Text("Borrow"), Text("Offers", style: TextStyle(color: Colors.yellow)),
-              //   ],
-              // ),
-              // // Marketplace Grid
-              // GridView.count(
-              //   crossAxisCount: 2,
-              //   shrinkWrap: true,
-              //   physics: NeverScrollableScrollPhysics(),
-              //   children: [
-              //     Card(child: Text("MTN FibreX")),
-              //     Card(child: Text("Dominos Pizza")),
-              //     // Add more items
-              //   ],
-              // ),
+              const SliderItem(
+                phoneNumber: "08012345678"),
+
             ],
           ),
         ),
-        // bottomNavigationBar: CurvedBottomNavigationBar(
-        //     selectedIndex: _selectedIndex,
-        //     onTap: _onItemTapped,
-        //     items: [
-        //       BottomNavigationBarItem(
-        //         icon: Icon(Icons.home),
-        //         label: "Home",
-        //       ),
-        //       BottomNavigationBarItem(
-        //         icon: Icon(Icons.play_arrow),
-        //         label: "Play",
-        //       ),
-        //       BottomNavigationBarItem(
-        //         icon: Icon(Icons.store),
-        //         label: "Marketplace",
-        //         activeIcon: Container(
-        //           padding: EdgeInsets.all(8),
-        //           decoration: BoxDecoration(
-        //             color: Colors.yellow[700],
-        //             shape: BoxShape.circle,
-        //           ),
-        //           child: Icon(Icons.store, color: Colors.black),
-        //         ),
-        //       ),
-        //       BottomNavigationBarItem(
-        //         icon: Icon(Icons.help),
-        //         label: "Help",
-        //       ),
-        //       BottomNavigationBarItem(
-        //         icon: Icon(Icons.more_horiz),
-        //         label: "More",
-        //       ),
-        //     ])
       ),
     );
   }
