@@ -78,9 +78,8 @@ class BalanceSliderItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center( // Keeps item centered in viewport
+    return Center(
       child: Container(
-        // Removed horizontal margin to avoid overflow from both ends
         constraints: const BoxConstraints(
           maxWidth: 350, // Prevent overly wide layout
         ),
@@ -106,7 +105,7 @@ class BalanceSliderItem extends StatelessWidget {
                   Text(phoneNumber, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white)),
                   Row(
                     children: const [
-                      Text('Account', style: TextStyle(fontSize: 12)),
+                      Text('MTN XtraValue', style: TextStyle(fontSize: 12)),
                       SizedBox(width: 4),
                       Icon(Icons.arrow_forward_ios, size: 12),
                     ],
@@ -129,6 +128,7 @@ class BalanceSliderItem extends StatelessWidget {
                       bonus: '₦0',
                       buttonLabel: 'Buy Airtime',
                       onPressed: () => print('Buy Airtime'),
+                      buttonIcon: Icons.refresh,
                     ),
                   ),
                   Container(width: 1, height: 110, color: Colors.grey[700]),
@@ -141,14 +141,14 @@ class BalanceSliderItem extends StatelessWidget {
                       bonus: '19.24GB',
                       buttonLabel: 'Buy Data',
                       onPressed: () => print('Buy Data'),
+                      buttonIcon: Icons.import_export,
                     ),
                   ),
                 ],
               ),
             ),
 
-            const SizedBox(height: 12),
-
+            // Removed the SizedBox(height: 12) here to eliminate space before "View details"
             Container(
               padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
               width: double.infinity,
@@ -159,14 +159,13 @@ class BalanceSliderItem extends StatelessWidget {
                   bottomRight: Radius.circular(12),
                 ),
               ),
-              child: Center(
-                child: Text(
-                  'View details',
-                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                    color: Colors.black87,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 12,
-                  ),
+              child: Text(
+                'View details',
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 13,
                 ),
               ),
             ),
@@ -176,6 +175,7 @@ class BalanceSliderItem extends StatelessWidget {
     );
   }
 }
+
 
 class BalanceSliderItemTwo extends StatelessWidget {
   const BalanceSliderItemTwo({super.key});
@@ -263,6 +263,7 @@ class BalanceColumn extends StatelessWidget {
   final String bonus;
   final String buttonLabel;
   final VoidCallback onPressed;
+  final IconData buttonIcon; // <-- new
 
   const BalanceColumn({
     required this.icon,
@@ -271,6 +272,7 @@ class BalanceColumn extends StatelessWidget {
     required this.bonus,
     required this.buttonLabel,
     required this.onPressed,
+    required this.buttonIcon, // <-- new
     super.key,
   });
 
@@ -279,6 +281,7 @@ class BalanceColumn extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 6),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
@@ -295,23 +298,23 @@ class BalanceColumn extends StatelessWidget {
             text: TextSpan(
               style: Theme.of(context).textTheme.labelSmall?.copyWith(color: Colors.black87),
               children: [
-                const TextSpan(text: 'Bonus: ', style: TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.w300)),
-                TextSpan(text: bonus, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white)),
+                const TextSpan(text: 'Bonus: ', style: TextStyle(fontSize: 12, color: Colors.white, fontWeight: FontWeight.w300)),
+                TextSpan(text: bonus, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: Colors.white)),
               ],
             ),
           ),
           const SizedBox(height: 4),
           ElevatedButton.icon(
             onPressed: onPressed,
-            icon: const Icon(Icons.shopping_cart, size: 14, color: Colors.white),
+            icon: Icon(buttonIcon, size: 14, color: Colors.white), // <-- updated
             label: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(buttonLabel,
-                  style: const TextStyle(color: Color(0xFFFFCB05), fontSize: 11),
+                  style: const TextStyle(color: Color(0xFFFFCB05), fontSize: 12),
                 ),
                 const SizedBox(width: 4),
-                const Icon(Icons.arrow_forward_ios, size: 10, color: Colors.black),
+                const Icon(Icons.arrow_forward_ios, size: 10, color: Colors.white),
               ],
             ),
             style: ElevatedButton.styleFrom(
@@ -321,7 +324,7 @@ class BalanceColumn extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
-              minimumSize: const Size(0, 30),
+              minimumSize: const Size(120, 30),
               elevation: 0,
             ),
           )
