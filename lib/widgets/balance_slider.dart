@@ -42,7 +42,7 @@ class SliderItem extends StatelessWidget {
             ),
           ),
 
-          const Divider(height: 20),
+          Divider(height: 4, color: Colors.grey[700]),
 
           // Middle Section with manual padding
           Padding(
@@ -59,7 +59,8 @@ class SliderItem extends StatelessWidget {
                     onPressed: () => print('Buy Airtime'),
                   ),
                 ),
-                Container(width: 1, height: 110, color: Colors.grey[300]),
+                Container(width: 1, height: 110, color: Colors.grey[700]),
+                SizedBox(width: 8,),
                 Expanded(
                   child: BalanceColumn(
                     icon: Icons.wifi,
@@ -93,6 +94,7 @@ class SliderItem extends StatelessWidget {
                 style: Theme.of(context).textTheme.labelLarge?.copyWith(
                   color: Colors.black87,
                   fontWeight: FontWeight.w500,
+                  fontSize: 12
                 ),
               ),
             ),
