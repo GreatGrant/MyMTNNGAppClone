@@ -183,7 +183,7 @@ class BalanceSliderItemTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
       decoration: BoxDecoration(
         color: const Color(0xFF414141),
         borderRadius: BorderRadius.circular(12),
@@ -234,11 +234,10 @@ class BalanceSliderItemTwo extends StatelessWidget {
             ),
           ),
 
-          const SizedBox(height: 12),
 
           // View Details (no side padding so it spans full width)
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+            padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 16),
             width: double.infinity,
             decoration: const BoxDecoration(
               color: Color(0xFF8D8D8D),

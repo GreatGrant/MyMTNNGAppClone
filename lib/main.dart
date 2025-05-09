@@ -15,9 +15,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: const MyHomePage(),
-      theme: buildLightAppTheme(),   // Light theme
-      darkTheme: buildDarkAppTheme(), // Dark theme
-      themeMode: ThemeMode.system,    // Use system theme mode
     );
   }
 }
@@ -30,32 +27,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // int _selectedIndex = 0;
-
-  // void _onItemTapped(int index){
-  //   setState(() {
-  //     _selectedIndex = index;
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: const CustomAppBar(
-            userName: "Great Grant",
-            phoneNumber: '08012345678',
-            notificationCount: 2
+          userName: "Great Grant",
+          phoneNumber: '08012345678',
         ),
         body: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 14),
               PromoSlider(
                 items: [
                   PromoItem(
                     title: "TopDeals4Me",
-                    message: "Enjoy 30GB at ₦7,500. You get 20GB + EXTRA 10GB data BONUS.\nData is valid for 30days.",
                     buttonText: "Claim",
                     onButtonPressed: () {
                       print("Claim button pressed");
@@ -71,7 +57,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ],
               ),
-              SizedBox(height: 12,),
               Center(
                 child: InkWell(
                   onTap: () {
@@ -94,9 +79,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ),
-              SizedBox(height: 12,),
-              // Balance Section
-              const BalanceSlider()
             ],
           ),
         ),
@@ -104,4 +86,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
