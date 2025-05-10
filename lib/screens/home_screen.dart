@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_mtn_app_clone/theme/app_colors.dart';
 import 'package:my_mtn_app_clone/widgets/action_button.dart';
 import 'package:my_mtn_app_clone/widgets/balance_slider.dart';
 import 'package:my_mtn_app_clone/widgets/bottom_promotional_slider.dart';
@@ -7,25 +8,37 @@ import 'package:my_mtn_app_clone/widgets/custom_appbar.dart';
 import 'package:my_mtn_app_clone/widgets/divider_text.dart';
 import 'package:my_mtn_app_clone/widgets/promotional_slider.dart';
 import 'package:my_mtn_app_clone/widgets/scrollable_tab_grid.dart';
+import '../widgets/custom_bottom_nav_bar.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0;
+
+  final List<NavBarItem> _items = [
+    NavBarItem(icon: Icons.home, label: 'Home'),
+    NavBarItem(icon: Icons.smart_display, label: 'Play'),
+    NavBarItem(icon: Icons.help, label: 'Help'),
+    NavBarItem(icon: Icons.more_horiz, label: 'More'),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: const CustomAppBar(
-          userName: "Great Grant",
-          phoneNumber: '08012345678',
-          notificationCount: 2,
-        ),
-        body: SingleChildScrollView(
+    return Scaffold(
+      extendBody: true,
+      appBar: const CustomAppBar(
+        userName: "Great Grant",
+        phoneNumber: '08012345678',
+        notificationCount: 2,
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 100),
           child: Column(
             children: [
               const SizedBox(height: 14),
@@ -81,13 +94,41 @@ class _MyHomePageState extends State<MyHomePage> {
               const DividerText(text: 'Marketplace'),
               const ScrollableTabGrid(),
               const SizedBox(height: 16),
-              const BottomPromoSlider(imageUrls: ["assets/images/Independence-Day-Promo.png", "assets/images/MTNSkillsAcademyPlus.jpeg"]),
+              const BottomPromoSlider(
+                imageUrls: [
+                  "assets/images/Independence-Day-Promo.png",
+                  "assets/images/MTNSkillsAcademyPlus.jpeg"
+                ],
+              ),
               const SizedBox(height: 16),
               const DividerText(text: 'Explore'),
-              ActionButton(icon: Icons.gamepad, label: "Free game", onTap: (){})
+              // ActionButton(icon: Icons.gamepad, label: "Free game", onTap: () {}),
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        shape: const CircleBorder(),
+        backgroundColor: AppColors.yellow700,
+        elevation: 8,
+        onPressed: () {
+          print("Center button tapped");
+        },
+        child: const Icon(Icons.widgets, color: Colors.black),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: CustomBottomNavBar(
+        items: _items,
+        selectedIndex: _selectedIndex,
+        onItemSelected: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+        centerIcon: Icons.widgets,
+        onCenterTap: () {
+          print("Center nav icon tapped");
+        },
       ),
     );
   }
