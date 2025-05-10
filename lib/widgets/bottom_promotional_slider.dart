@@ -19,25 +19,28 @@ class BottomPromoSlider extends StatelessWidget {
       ),
       itemBuilder: (context, index, realIndex) {
         return Center(
-          child: Container(
-            constraints: const BoxConstraints(maxWidth: 350),
-            decoration: BoxDecoration(
-              color: Colors.grey[800],
-              borderRadius: BorderRadius.circular(12),
-              boxShadow: const [
-                BoxShadow(
-                  color: Colors.black26,
-                  blurRadius: 4,
-                  offset: Offset(0, 2),
-                ),
-              ],
-            ),
-            clipBehavior: Clip.antiAlias,
-            child: Image.asset(
-              imageUrls[index],
-              fit: BoxFit.cover,
-              width: double.infinity,
-              height: double.infinity,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              constraints: const BoxConstraints(maxWidth: 350),
+              decoration: BoxDecoration(
+                color: Colors.grey[800],
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Colors.black26,
+                    blurRadius: 4,
+                    offset: Offset(0, 2),
+                  ),
+                ],
+              ),
+              clipBehavior: Clip.antiAlias,
+              child: Image.asset(
+                imageUrls[index],
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: double.infinity,
+              ),
             ),
           ),
         );
