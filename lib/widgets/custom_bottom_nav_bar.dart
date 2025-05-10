@@ -26,21 +26,27 @@ class CustomBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomAppBar(
-      shape: const CircularNotchedRectangle(),
-      color: const Color(0xFF1C1C1E),
-      notchMargin: 8,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            for (int i = 0; i < items.length ~/ 2; i++)
-              _buildItem(i, items[i]),
-            const SizedBox(width: 40), // Space for FAB
-            for (int i = items.length ~/ 2; i < items.length; i++)
-              _buildItem(i, items[i]),
-          ],
+    return ClipRRect(
+      borderRadius: const BorderRadius.only(
+        topLeft: Radius.circular(16),
+        topRight: Radius.circular(16),
+      ),
+      child: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        color: const Color(0xFF1C1C1E),
+        notchMargin: 8,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              for (int i = 0; i < items.length ~/ 2; i++)
+                _buildItem(i, items[i]),
+              const SizedBox(width: 40), // Space for FAB
+              for (int i = items.length ~/ 2; i < items.length; i++)
+                _buildItem(i, items[i]),
+            ],
+          ),
         ),
       ),
     );
