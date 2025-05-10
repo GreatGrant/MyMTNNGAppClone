@@ -9,6 +9,7 @@ import 'package:my_mtn_app_clone/widgets/divider_text.dart';
 import 'package:my_mtn_app_clone/widgets/promotional_slider.dart';
 import 'package:my_mtn_app_clone/widgets/scrollable_tab_grid.dart';
 import '../widgets/custom_bottom_nav_bar.dart';
+import '../widgets/explore_action_button.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -102,7 +103,19 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const SizedBox(height: 16),
               const DividerText(text: 'Explore'),
-              // ActionButton(icon: Icons.gamepad, label: "Free game", onTap: () {}),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ExploreActionButton(icon: Icons.gamepad, label: "Free game", onTap: () {}),
+                    const SizedBox(width: 16), // Add spacing between buttons if needed
+                    ExploreActionButton(icon: Icons.local_offer, label: "Special Offer", onTap: () {}),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 12),
             ],
           ),
         ),
