@@ -32,9 +32,9 @@ class _AppDrawerState extends State<AppDrawer> {
                   _buildTile(Icons.add, 'Add New Number'),
                   _buildTile(Icons.flight, 'Roaming'),
                   _buildTileWithBadge(Icons.notifications, 'Notification', '2'),
-                  _buildTile(Icons.info, 'App Tour'),
+                  _buildTile(Icons.router, 'App Tour'),
                   const Divider(color: Colors.grey),
-                  _buildTile(Icons.power_settings_new, 'Log out', color: Colors.red, textColor: Colors.red),
+                  _buildTile(Icons.info, 'Log out', color: Colors.red, textColor: Colors.red),
                 ],
               ),
             ),
@@ -45,24 +45,51 @@ class _AppDrawerState extends State<AppDrawer> {
   }
 
   Widget _buildHeader() {
+    final theme = Theme.of(context);
+    final bodyStyle = theme.textTheme.bodyMedium;
+    final smallText = bodyStyle?.copyWith(fontSize: 12);
+    final labelStyle = theme.textTheme.labelLarge;
+
     return DrawerHeader(
       padding: const EdgeInsets.all(16),
       child: Row(
         children: [
           const CircleAvatar(
-            radius: 28,
-            backgroundColor: Colors.grey,
-            child: Text('G', style: TextStyle(color: Colors.white, fontSize: 24)),
+            radius: 24,
+            backgroundColor: Color(0xFF3A3A3A),
+            child: Text('G', style: TextStyle(color: Colors.white, fontSize: 20)),
           ),
-          const SizedBox(width: 12),
+          const SizedBox(width: 8),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('Yello, Great Grant',
-                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16)),
-                const Text('081****9766', style: TextStyle(color: Colors.white)),
+                RichText(
+                  text: TextSpan(
+                    style: bodyStyle?.copyWith(
+                      color: Colors.white,
+                      fontSize: 14,
+                    ),
+                    children: [
+                      TextSpan(
+                        text: "Y'ello, ",
+                        style: bodyStyle?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          fontStyle: FontStyle.italic,
+                          color: Colors.white,
+                        ),
+                      ),
+                      TextSpan(
+                        text: "Great Grant",
+                        style: bodyStyle?.copyWith(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const Text('081****9766', style: TextStyle(fontSize: 12, color: Colors.white)),
                 const SizedBox(height: 6),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -70,14 +97,14 @@ class _AppDrawerState extends State<AppDrawer> {
                     color: Colors.grey[900],
                     borderRadius: BorderRadius.circular(4),
                   ),
-                  child: Row(
+                  child: const Row(
                     mainAxisSize: MainAxisSize.min,
-                    children: const [
-                      Icon(Icons.emoji_events, color: Colors.white, size: 16),
+                    children: [
+                      Icon(Icons.emoji_events, color: Colors.white, size: 12),
                       SizedBox(width: 4),
-                      Text('Explore Prestige', style: TextStyle(color: Colors.white, fontSize: 12)),
+                      Text('Explore Prestige', style: TextStyle(color: Colors.white, fontSize: 8)),
                       SizedBox(width: 4),
-                      Icon(Icons.arrow_forward_ios, color: Colors.white, size: 12),
+                      Icon(Icons.arrow_forward_ios, color: Colors.white, size: 8),
                     ],
                   ),
                 ),
