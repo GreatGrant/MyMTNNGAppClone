@@ -40,15 +40,24 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CircleAvatar(
-                  backgroundColor: const Color(0xFF3A3A3A),
-                  radius: 20,
-                  child: Text(
-                    "G",
-                    style: labelStyle?.copyWith(
-                      color: Colors.white,
-                    ),
-                  ),
+                Builder(
+                  builder: (context) {
+                    return GestureDetector(
+                      onTap: () {
+                        Scaffold.of(context).openDrawer();
+                      },
+                      child: CircleAvatar(
+                        backgroundColor: const Color(0xFF3A3A3A),
+                        radius: 20,
+                        child: Text(
+                          "G",
+                          style: labelStyle?.copyWith(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
