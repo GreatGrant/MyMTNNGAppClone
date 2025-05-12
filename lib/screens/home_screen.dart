@@ -125,11 +125,11 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [DraggableFloatingActionButton(),],
-          )
+          // const Row(
+          //   mainAxisAlignment: MainAxisAlignment.end,
+          //   crossAxisAlignment: CrossAxisAlignment.end,
+          //   children: [DraggableFloatingActionButton(),],
+          // )
 
         ]
 
