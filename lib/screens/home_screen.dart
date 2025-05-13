@@ -35,12 +35,13 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      appBar: const CustomAppBar(
+      appBar: _selectedIndex == 0
+          ? const CustomAppBar(
         userName: "Great Grant",
         phoneNumber: '08012345678',
         notificationCount: 2,
-      ),
-      drawer: AppDrawer(),
+      )
+          : null,drawer: const AppDrawer(),
       body: _buildBody(),
       floatingActionButton: FloatingActionButton(
         shape: const CircleBorder(),
