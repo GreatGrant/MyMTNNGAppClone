@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
 import '../theme/app_colors.dart';
+import 'biometric_switch_tile.dart';
+import 'drawer_tile.dart';
+import 'drawer_tile_with_badge.dart';
 
 class AppDrawer extends StatefulWidget {
   const AppDrawer({super.key});
@@ -23,18 +26,28 @@ class _AppDrawerState extends State<AppDrawer> {
             _buildHeader(),
             Expanded(
               child: ListView(
-                children: [
-                  _buildTile(Icons.home, 'Home', color: AppColors.yellow700, selected: true),
-                  _buildTile(Icons.receipt, 'Account Summary'),
-                  _buildSwitchTile(),
-                  _buildTile(Icons.call, 'Tariff Plans'),
-                  _buildTile(Icons.person, 'My Profile'),
-                  _buildTile(Icons.add, 'Add New Number'),
-                  _buildTile(Icons.flight, 'Roaming'),
-                  _buildTileWithBadge(Icons.notifications, 'Notification', '2'),
-                  _buildTile(Icons.router, 'App Tour'),
-                  const Divider(color: Colors.grey),
-                  _buildTile(Icons.info, 'Log out', color: Colors.red, textColor: Colors.red),
+                children: const [
+                  DrawerTile(icon: Icons.home, title: 'Home'),
+                  DrawerTile(icon: Icons.receipt, title: 'Account Summary'),
+                  BiometricSwitchTile(),
+                  DrawerTile(icon: Icons.call, title: 'Tariff Plans'),
+                  DrawerTile(icon: Icons.person, title: 'My Profile'),
+                  DrawerTile(icon: Icons.add, title: 'Add New Number'),
+                  DrawerTile(icon: Icons.flight, title: 'Roaming'),
+                  DrawerTileWithBadge(
+                    icon: Icons.notifications,
+                    title: 'Notification',
+                    badgeCount: '2',
+                  ),
+                  DrawerTile(icon: Icons.router, title: 'App Tour'),
+                  Divider(color: Colors.grey),
+                  DrawerTile(
+                    icon: Icons.info,
+                    title: 'Log out',
+                    iconColor: Colors.red,
+                    textColor: Colors.red,
+                  ),
+
                 ],
               ),
             ),
@@ -47,8 +60,6 @@ class _AppDrawerState extends State<AppDrawer> {
   Widget _buildHeader() {
     final theme = Theme.of(context);
     final bodyStyle = theme.textTheme.bodyMedium;
-    final smallText = bodyStyle?.copyWith(fontSize: 12);
-    final labelStyle = theme.textTheme.labelLarge;
 
     return DrawerHeader(
       padding: const EdgeInsets.all(16),
@@ -116,89 +127,7 @@ class _AppDrawerState extends State<AppDrawer> {
     );
   }
 
-  Widget _buildTile(IconData icon, String title,
-      {Color color = Colors.grey, bool selected = false, Color? textColor}) {
-    return ListTile(
-      leading: Icon(icon, color: color),
-      title: Text(
-        title,
-        style: TextStyle(
-          fontSize: 14,
-          color: textColor ?? Colors.white,
-          fontWeight: selected ? FontWeight.bold : FontWeight.normal,
-        ),
-      ),
-      selected: selected,
-      onTap: () {},
-    );
-  }
-
-  Widget _buildTileWithBadge(IconData icon, String title, String badgeCount) {
-    return ListTile(
-      title: Row(
-        children: [
-          const Icon(Icons.lock, color: Colors.grey, size: 14),
-          const SizedBox(width: 28),
-          Text(
-            title,
-            style: const TextStyle(fontSize: 14, color: Colors.white),
-          ),
-          const SizedBox(width: 6),
-          Container(
-            padding: const EdgeInsets.all(4),
-            decoration: BoxDecoration(
-              color: AppColors.yellow700,
-              shape: BoxShape.circle,
-            ),
-            constraints: const BoxConstraints(minWidth: 20, minHeight: 20),
-            child: Center(
-              child: Text(
-                badgeCount,
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 12,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-      onTap: () {},
-    );
-  }
-
-  Widget _buildSwitchTile() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Row(
-        children: [
-          const Icon(Icons.fingerprint, color: Colors.grey),
-          const SizedBox(width: 16),
-          const Expanded(
-            child: Text(
-              'Biometric Access',
-              style: TextStyle(fontSize: 14, color: Colors.white),
-            ),
-          ),
-          FlutterSwitch(
-            width: 40.0,
-            height: 20.0,
-            toggleSize: 16.0,
-            value: biometricEnabled,
-            activeColor: AppColors.yellow700,
-            inactiveColor: Colors.grey,
-            padding: 2.0,
-            onToggle: (val) {
-              setState(() {
-                biometricEnabled = val;
-              });
-            },
-          ),
-        ],
-      ),
-    );
-  }
 
 
 }
+
