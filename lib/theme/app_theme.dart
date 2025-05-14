@@ -32,6 +32,12 @@ ThemeData buildDarkAppTheme() {
         fontWeight: FontWeight.bold,
         fontFamily: 'MTNBrighterSans', // Set custom font family here
       ),
+      headlineSmall: TextStyle(
+        fontSize: AppDimensions.fontLarge,
+        fontWeight: FontWeight.normal,
+        color: AppColors.darkText, // or AppColors.lightText for light theme
+        fontFamily: 'MTNBrighterSans',
+      ),
       bodyLarge: TextStyle(
         color: AppColors.darkText,
         fontSize: AppDimensions.fontBase,
@@ -123,13 +129,13 @@ ThemeData buildLightAppTheme() {
       iconTheme: IconThemeData(color: AppColors.lightIcon),
     ),
     textTheme: TextTheme(
-      titleLarge: TextStyle(
+      titleLarge: const TextStyle(
         color: AppColors.lightText,
         fontSize: AppDimensions.fontXLarge,
         fontWeight: FontWeight.bold,
         fontFamily: 'MTNBrighterSans', // Set custom font family here
       ),
-      bodyLarge: TextStyle(
+      bodyLarge: const TextStyle(
         color: AppColors.lightText,
         fontSize: AppDimensions.fontBase,
         fontFamily: 'MTNBrighterSans', // Set custom font family here
@@ -139,7 +145,13 @@ ThemeData buildLightAppTheme() {
         fontSize: AppDimensions.fontSmall,
         fontFamily: 'MTNBrighterSans', // Set custom font family here
       ),
-      labelLarge: TextStyle(
+      headlineSmall: const TextStyle(
+        fontSize: AppDimensions.fontLarge,
+        fontWeight: FontWeight.normal,
+        color: AppColors.lightText, // or AppColors.lightText for light theme
+        fontFamily: 'MTNBrighterSans',
+      ),
+      labelLarge: const TextStyle(
         color: AppColors.darkText,
         fontSize: AppDimensions.fontBase,
         fontWeight: FontWeight.bold,

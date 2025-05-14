@@ -4,6 +4,7 @@ class AppColors {
   // Primary yellow
   static const MaterialColor yellow = Colors.yellow;
   static final Color yellow700 = Colors.yellow[700]!;
+  static const Color yellowBg = Color(0xFFFFCB05);
   static final Color yellow200 = Colors.yellow[200]!;
 
   // Light theme colors

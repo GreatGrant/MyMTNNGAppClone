@@ -1,149 +1,132 @@
 import 'package:flutter/material.dart';
+import 'package:my_mtn_app_clone/theme/app_colors.dart';
 
 class HelpScreen extends StatelessWidget {
   const HelpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFF1A1A1A), // Dark grayish-black
-              Color(0xFFFFD700), // Warm yellow
-            ],
-          ),
-        ),
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const GreetingHeader(),
-                const SizedBox(height: 20),
-                Expanded(child: OptionsList()),
-              ],
-            ),
-          ),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: Colors.white,
-        child: const Icon(Icons.chat_bubble, color: Colors.yellow),
-      ),
-    );
-  }
-}
-
-// Reusable Greeting Header Widget
-class GreetingHeader extends StatelessWidget {
-  const GreetingHeader({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        body: Column(
           children: [
-            const Icon(
-              Icons.chat_bubble_outline,
-              color: Colors.blue,
-              size: 24,
+            // Header section
+            // Header section
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 18.0),
+              color: AppColors.yellowBg,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 16),
+                  const CircleAvatar(
+                    radius: 18,
+                    backgroundColor: Colors.white,
+                    child: Icon(Icons.chat_bubble, color: Colors.blue, size: 18),
+                  ),
+                  const SizedBox(height: 8),
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'Hey, ',
+                          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic,
+                            color: Colors.black,
+                          ),
+                        ),
+                        TextSpan(
+                          text: 'Great Grant',
+                          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                  const Text(
+                    'How may we help you?',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.black87,
+                    ),
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(width: 8),
+            // List of options
             Expanded(
-              child: Text(
-                'Hey Great Grant,\nHow may we help You?',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                  height: 1.2,
-                ),
+              child: ListView(
+                children: [
+                  _buildListTile(
+                    icon: Icons.phone_outlined,
+                    title: 'Contact us',
+                    subtitle: 'Get in touch with us',
+                  ),
+                  Divider(color: Colors.grey[800]),
+                  _buildListTile(
+                    icon: Icons.thumb_up_outlined,
+                    title: 'Feedback',
+                    subtitle: 'Share your feedback and help us serve you better',
+                  ),
+                  Divider(color: Colors.grey[800]),
+                  _buildListTile(
+                    icon: Icons.question_answer_outlined,
+                    title: 'Frequently Asked Questions',
+                    subtitle: 'Get a quick answers to all your questions.',
+                  ),
+                  Divider(color: Colors.grey[800]),
+                  _buildListTile(
+                    icon: Icons.card_giftcard_outlined,
+                    title: 'MTN Foundation',
+                    subtitle: 'View projects and activities',
+                  ),
+                  Divider(color: Colors.grey[800]),
+                  _buildListTile(
+                    icon: Icons.description,
+                    title: 'Track Complaint',
+                    subtitle: 'Know the status of your complaints',
+                  ),
+                ],
               ),
             ),
           ],
         ),
-      ],
+      ),
     );
   }
-}
 
-// Reusable Options List Widget
-class OptionsList extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      children: const [
-        OptionTile(
-          icon: Icons.phone,
-          title: 'Contact us',
-          subtitle: 'Get in touch with us',
-        ),
-        Divider(color: Colors.white30),
-        OptionTile(
-          icon: Icons.thumb_up,
-          title: 'Feedback',
-          subtitle: 'Share your feedback and help us serve you better',
-        ),
-        Divider(color: Colors.white30),
-        OptionTile(
-          icon: Icons.help_outline,
-          title: 'Frequently Asked Questions',
-          subtitle: 'Get a quick answers to all your questions.',
-        ),
-        Divider(color: Colors.white30),
-        OptionTile(
-          icon: Icons.favorite_border,
-          title: 'MTN Foundation',
-          subtitle: 'View projects and activities',
-        ),
-        Divider(color: Colors.white30),
-        OptionTile(
-          icon: Icons.description,
-          title: 'Track Complaint',
-          subtitle: 'Know the status of your complaints',
-        ),
-      ],
-    );
-  }
-}
-
-// Reusable Option Tile Widget
-class OptionTile extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final String subtitle;
-
-  const OptionTile({
-    required this.icon,
-    required this.title,
-    required this.subtitle,
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
+  Widget _buildListTile({
+    required IconData icon,
+    required String title,
+    required String subtitle,
+  }) {
     return ListTile(
       leading: CircleAvatar(
-        backgroundColor: Colors.grey[800],
-        child: Icon(icon, color: Colors.yellow),
+        backgroundColor: Colors.grey[900],
+        child: Icon(icon, color: AppColors.yellow700),
       ),
       title: Text(
         title,
-        style: const TextStyle(fontSize: 16, color: Colors.white),
+        style: const TextStyle(
+          fontSize: 15,
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+        ),
       ),
       subtitle: Text(
         subtitle,
-        style: const TextStyle(fontSize: 12, color: Colors.white70),
+        style: const TextStyle(fontSize: 12, color: Colors.grey),
       ),
-      trailing: const Icon(Icons.arrow_forward_ios, color: Colors.white70),
+      trailing: const Icon(Icons.arrow_forward_ios_rounded,
+          color: Colors.grey, size: 14),
+      onTap: () {
+        // Add navigation or functionality here
+      },
     );
   }
 }
