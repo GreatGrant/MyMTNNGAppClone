@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_mtn_app_clone/widgets/info_tile.dart'; // Update path as needed
+import 'package:my_mtn_app_clone/widgets/info_tile.dart';
+
+import 'menu_list.dart'; // Update path as needed
 
 class MyAccountTab extends StatelessWidget {
   const MyAccountTab({super.key});
@@ -57,6 +59,23 @@ class MyAccountTab extends StatelessWidget {
             subtitle: 'View the status of your payment',
             onTap: () {},
           ),
+      Center(
+        child: MenuList(
+          menuItems: const [
+            'Device Data Usage',
+            '5G Coverage Locator',
+            'Speed Test',
+            'App Tour',
+            'Privacy Policy',
+            'Terms And Conditions',
+            'Log Out',
+          ],
+          onItemTapped: (item) {
+            print('Tapped on: $item');
+            // Add your navigation or action logic here
+          },
+        )),
+          const SizedBox(height: 12,)
         ],
       ),
     );

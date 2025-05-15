@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'info_tile.dart';
+import 'menu_list.dart';
 
 class ShareBorrowTab extends StatelessWidget {
   const ShareBorrowTab({super.key});
@@ -12,7 +13,7 @@ class ShareBorrowTab extends StatelessWidget {
       child: Column(
         children: [
         InfoTile(
-            icon: Icons.share,
+            icon: Icons.handshake,
             title: 'Share Airtime/Data',
             subtitle: 'Show love to family and friends',
             onTap: () {},
@@ -23,24 +24,24 @@ class ShareBorrowTab extends StatelessWidget {
             subtitle: 'Never run out of Airtime or Data',
             onTap: () {},
           ),
-          InfoTile(
-            icon: Icons.device_hub,
-            title: 'Device Data Usage',
-            subtitle: '',
-            onTap: () {},
-          ),
-          InfoTile(
-            icon: Icons.signal_cellular_alt,
-            title: '5G Coverage Locator',
-            subtitle: '',
-            onTap: () {},
-          ),
-          InfoTile(
-            icon: Icons.speed,
-            title: 'Speed Test',
-            subtitle: '',
-            onTap: () {},
-          ),
+
+          Center(
+              child: MenuList(
+                menuItems: const [
+                  'Device Data Usage',
+                  '5G Coverage Locator',
+                  'Speed Test',
+                  'App Tour',
+                  'Privacy Policy',
+                  'Terms And Conditions',
+                  'Log Out',
+                ],
+                onItemTapped: (item) {
+                  print('Tapped on: $item');
+                  // Add your navigation or action logic here
+                },
+              )),
+          const SizedBox(height: 12,)
         ],
       ),
     );
