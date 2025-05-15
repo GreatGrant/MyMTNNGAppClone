@@ -38,6 +38,11 @@ ThemeData buildDarkAppTheme() {
         color: AppColors.darkText, // or AppColors.lightText for light theme
         fontFamily: 'MTNBrighterSans',
       ),
+      bodySmall: TextStyle(
+        color: AppColors.darkBodyMedium,
+        fontSize: AppDimensions.fontXSmall,
+        fontFamily: 'MTNBrighterSans',
+      ),
       bodyLarge: TextStyle(
         color: AppColors.darkText,
         fontSize: AppDimensions.fontBase,
@@ -156,6 +161,11 @@ ThemeData buildLightAppTheme() {
         fontSize: AppDimensions.fontBase,
         fontWeight: FontWeight.bold,
         fontFamily: 'MTNBrighterSans', // Set custom font family here
+      ),
+      bodySmall: TextStyle(
+        color: AppColors.darkBodyMedium,
+        fontSize: AppDimensions.fontXSmall,
+        fontFamily: 'MTNBrighterSans',
       ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(

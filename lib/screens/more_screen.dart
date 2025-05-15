@@ -17,7 +17,19 @@ class MoreScreen extends StatelessWidget {
         child: Scaffold(
           body: Column(
             children: [
-              ProfileSection(),
+              const ProfileSection(),
+              TabBar(
+                labelStyle: Theme.of(context).textTheme.bodySmall, // Uses theme font
+                unselectedLabelStyle: Theme.of(context).textTheme.bodySmall, // Uses theme font
+                labelColor: Colors.white,
+                unselectedLabelColor: Colors.grey,
+                indicatorColor: Colors.white,
+                tabs: [
+                  Tab(text: 'My Account'),
+                  Tab(text: 'Share &\nBorrow'),
+                  Tab(text: 'Rewards'),
+                ],
+              ),
               Expanded(
                 child: TabBarView(
                   children: [

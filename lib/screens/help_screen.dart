@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_mtn_app_clone/theme/app_colors.dart';
+import 'package:my_mtn_app_clone/widgets/info_tile.dart';
 
 class HelpScreen extends StatelessWidget {
   const HelpScreen({super.key});
@@ -62,32 +63,32 @@ class HelpScreen extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
-                  _buildListTile(
+                  const InfoTile(
                     icon: Icons.phone_outlined,
                     title: 'Contact us',
                     subtitle: 'Get in touch with us',
                   ),
                   Divider(color: Colors.grey[800]),
-                  _buildListTile(
+                  const InfoTile(
                     icon: Icons.thumb_up_outlined,
                     title: 'Feedback',
                     subtitle: 'Share your feedback and help us serve you better',
                   ),
                   Divider(color: Colors.grey[800]),
-                  _buildListTile(
+                  const InfoTile(
                     icon: Icons.question_answer_outlined,
                     title: 'Frequently Asked Questions',
                     subtitle: 'Get a quick answers to all your questions.',
                   ),
                   Divider(color: Colors.grey[800]),
-                  _buildListTile(
+                  const InfoTile(
                     icon: Icons.card_giftcard_outlined,
                     title: 'MTN Foundation',
                     subtitle: 'View projects and activities',
                   ),
                   Divider(color: Colors.grey[800]),
-                  _buildListTile(
-                    icon: Icons.description,
+                  const InfoTile(
+                    icon: Icons.description_outlined,
                     title: 'Track Complaint',
                     subtitle: 'Know the status of your complaints',
                   ),
@@ -100,33 +101,4 @@ class HelpScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildListTile({
-    required IconData icon,
-    required String title,
-    required String subtitle,
-  }) {
-    return ListTile(
-      leading: CircleAvatar(
-        backgroundColor: Colors.grey[900],
-        child: Icon(icon, color: AppColors.yellow700),
-      ),
-      title: Text(
-        title,
-        style: const TextStyle(
-          fontSize: 15,
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      subtitle: Text(
-        subtitle,
-        style: const TextStyle(fontSize: 12, color: Colors.grey),
-      ),
-      trailing: const Icon(Icons.arrow_forward_ios_rounded,
-          color: Colors.grey, size: 14),
-      onTap: () {
-        // Add navigation or functionality here
-      },
-    );
-  }
 }

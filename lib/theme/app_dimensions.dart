@@ -9,6 +9,7 @@ class AppDimensions {
   static const double radiusMedium = 20;
 
   // Font sizes
+  static const double fontXSmall = 12;
   static const double fontSmall = 14;
   static const double fontBase = 16;
   static const double fontLarge = 18;
