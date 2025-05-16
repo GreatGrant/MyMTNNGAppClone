@@ -42,6 +42,13 @@ Any logo seen in screenshots or local builds is either a **placeholder** or used
 ### 🖼 Carousel Images
 Some original promotional images from the official app were replaced with royalty-free or placeholder images in this public version to comply with copyright rules.
 
+### 🖼 Third-Party Logos
+
+This project includes logos or icons of third-party services (e.g. Cowrywise, MoMo PSB, BetKing, etc.) to replicate the original app experience.
+
+> **These logos are owned by their respective companies** and are used here only for **personal learning and design reference**.
+
+
 ---
 
 ## 📦 Usage
@@ -60,6 +67,7 @@ Do **not**:
 <!-- Insert screenshots here -->
 <!-- Example: ![Home Screen](screenshots/home_screen.png) -->
 ![Untitled design](https://github.com/user-attachments/assets/8f2ec42c-61f3-45c6-9f63-6aa4f343ab78)
+🎥 [Watch demo video on X](https://x.com/i/status/1921187051694669972)
 
 
 ---
