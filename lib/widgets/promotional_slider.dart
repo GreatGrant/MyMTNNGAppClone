@@ -24,7 +24,7 @@ class PromoSlider extends StatefulWidget {
   const PromoSlider({
     super.key,
     required this.items,
-    this.height = 90.0, // Flatter banner
+    this.height = 90.0,
   });
 
   @override

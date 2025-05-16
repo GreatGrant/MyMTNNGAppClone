@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 import 'app_dimensions.dart';
 
+const kFontFamily = 'Manrope';
+
 ThemeData buildDarkAppTheme() {
   final ThemeData base = ThemeData.dark();
 
@@ -21,43 +23,43 @@ ThemeData buildDarkAppTheme() {
         color: AppColors.darkText,
         fontSize: AppDimensions.fontLarge,
         fontWeight: FontWeight.bold,
-        fontFamily: 'MTNBrighterSans', // Set custom font family here
+        fontFamily: kFontFamily,
       ),
       iconTheme: IconThemeData(color: AppColors.darkIcon),
     ),
     textTheme: TextTheme(
-      titleLarge: TextStyle(
+      titleLarge: const TextStyle(
         color: AppColors.darkText,
         fontSize: AppDimensions.fontXLarge,
         fontWeight: FontWeight.bold,
-        fontFamily: 'MTNBrighterSans', // Set custom font family here
+        fontFamily: kFontFamily,
       ),
-      headlineSmall: TextStyle(
+      headlineSmall: const TextStyle(
         fontSize: AppDimensions.fontLarge,
         fontWeight: FontWeight.normal,
-        color: AppColors.darkText, // or AppColors.lightText for light theme
-        fontFamily: 'MTNBrighterSans',
+        color: AppColors.darkText,
+        fontFamily: kFontFamily,
       ),
       bodySmall: TextStyle(
         color: AppColors.darkBodyMedium,
         fontSize: AppDimensions.fontXSmall,
-        fontFamily: 'MTNBrighterSans',
+        fontFamily: kFontFamily,
       ),
-      bodyLarge: TextStyle(
+      bodyLarge: const TextStyle(
         color: AppColors.darkText,
         fontSize: AppDimensions.fontBase,
-        fontFamily: 'MTNBrighterSans', // Set custom font family here
+        fontFamily: kFontFamily,
       ),
       bodyMedium: TextStyle(
         color: AppColors.darkBodyMedium,
         fontSize: AppDimensions.fontSmall,
-        fontFamily: 'MTNBrighterSans', // Set custom font family here
+        fontFamily: kFontFamily,
       ),
-      labelLarge: TextStyle(
+      labelLarge: const TextStyle(
         color: AppColors.lightText,
         fontSize: AppDimensions.fontBase,
         fontWeight: FontWeight.bold,
-        fontFamily: 'MTNBrighterSans', // Set custom font family here
+        fontFamily: kFontFamily,
       ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -106,7 +108,7 @@ ThemeData buildDarkAppTheme() {
         ),
       ),
     ),
-    iconTheme: IconThemeData(color: AppColors.darkIcon),
+    iconTheme: const IconThemeData(color: AppColors.darkIcon),
   );
 }
 
@@ -129,7 +131,7 @@ ThemeData buildLightAppTheme() {
         color: AppColors.lightText,
         fontSize: AppDimensions.fontLarge,
         fontWeight: FontWeight.bold,
-        fontFamily: 'MTNBrighterSans', // Set custom font family here
+        fontFamily: kFontFamily,
       ),
       iconTheme: IconThemeData(color: AppColors.lightIcon),
     ),
@@ -138,34 +140,34 @@ ThemeData buildLightAppTheme() {
         color: AppColors.lightText,
         fontSize: AppDimensions.fontXLarge,
         fontWeight: FontWeight.bold,
-        fontFamily: 'MTNBrighterSans', // Set custom font family here
+        fontFamily: kFontFamily,
       ),
       bodyLarge: const TextStyle(
         color: AppColors.lightText,
         fontSize: AppDimensions.fontBase,
-        fontFamily: 'MTNBrighterSans', // Set custom font family here
+        fontFamily: kFontFamily,
       ),
       bodyMedium: TextStyle(
         color: AppColors.lightBodyMedium,
         fontSize: AppDimensions.fontSmall,
-        fontFamily: 'MTNBrighterSans', // Set custom font family here
+        fontFamily: kFontFamily,
       ),
       headlineSmall: const TextStyle(
         fontSize: AppDimensions.fontLarge,
         fontWeight: FontWeight.normal,
-        color: AppColors.lightText, // or AppColors.lightText for light theme
-        fontFamily: 'MTNBrighterSans',
+        color: AppColors.lightText,
+        fontFamily: kFontFamily,
       ),
       labelLarge: const TextStyle(
         color: AppColors.darkText,
         fontSize: AppDimensions.fontBase,
         fontWeight: FontWeight.bold,
-        fontFamily: 'MTNBrighterSans', // Set custom font family here
+        fontFamily: kFontFamily,
       ),
       bodySmall: TextStyle(
         color: AppColors.darkBodyMedium,
         fontSize: AppDimensions.fontXSmall,
-        fontFamily: 'MTNBrighterSans',
+        fontFamily: kFontFamily,
       ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(

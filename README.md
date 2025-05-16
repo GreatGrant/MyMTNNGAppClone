@@ -12,6 +12,30 @@ The original MyMTN app uses **MTN Brighter Sans**, a proprietary font licensed f
 This project replaces it with the open-source [**Manrope**](https://fonts.google.com/specimen/Manrope) font for all public code and builds.  
 👉 **MTN Brighter Sans font files are not included** in this repository.
 
+### 🔤 Want to use MTN Brighter Sans font locally?
+By default, this project uses the open-source [Manrope](https://fonts.google.com/specimen/Manrope) font to keep it open and safe for sharing.
+But if you have access to **MTN Brighter Sans** and want to use it locally for personal builds:
+
+1. **Download the font on your computer**
+
+2. **Place the font files** (e.g. `MTNBrighterSans-Regular.ttf`, `MTNBrighterSans-Bold.ttf`) in your project `assets/fonts/` folder:
+
+
+3. **Update your `pubspec.yaml` like this:**
+```yaml
+flutter:
+  fonts:
+    - family: MTNBrighterSans
+      fonts:
+        - asset: assets/fonts/MTNBrighterSans-Regular.ttf
+        - asset: assets/fonts/MTNBrighterSans-Bold.ttf
+        
+4. **Update your theme file `(app_theme.dart)` like this:**
+```yaml
+   const kFontFamily = 'MTNBrighterSans';
+
+
+
 ### 🟡 Logos and Branding
 This project **does not include** any official MTN logos, icons, or branding.  
 Any logo seen in screenshots or local builds is either a **placeholder** or used **only for personal testing purposes** and not meant for public or commercial use.
