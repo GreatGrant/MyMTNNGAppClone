@@ -59,6 +59,8 @@ Do **not**:
 
 <!-- Insert screenshots here -->
 <!-- Example: ![Home Screen](screenshots/home_screen.png) -->
+![Untitled design](https://github.com/user-attachments/assets/8f2ec42c-61f3-45c6-9f63-6aa4f343ab78)
+
 
 ---
 
