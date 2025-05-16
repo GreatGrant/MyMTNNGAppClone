@@ -48,12 +48,12 @@ class _ScrollableTabGridState extends State<ScrollableTabGrid> with SingleTicker
       },
       {
         "label": "Cowrywise Save & Invest",
-        "color": Color(0xFF004CEB),
+        "color": const Color(0xFF004CEB),
         "image": "assets/images/cowrywise.png"
       },
       {
         "label": "BetKing Join & Get N100",
-        "color": Color(0xFF001041),
+        "color": const Color(0xFF001041),
         "image": "assets/images/betking.png"
       },
       {

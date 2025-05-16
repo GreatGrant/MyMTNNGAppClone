@@ -1,19 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter/material.dart';
-
-import 'package:flutter/material.dart';
-
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-
-import 'package:flutter/material.dart';
-
-import 'package:flutter/material.dart';
-
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/material.dart';
 
 class BalanceSlider extends StatefulWidget {
   const BalanceSlider({super.key});
@@ -103,8 +91,8 @@ class BalanceSliderItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(phoneNumber, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white)),
-                  Row(
-                    children: const [
+                  const Row(
+                    children: [
                       Text('MTN XtraValue', style: TextStyle(fontSize: 12)),
                       SizedBox(width: 4),
                       Icon(Icons.arrow_forward_ios, size: 12),
@@ -198,8 +186,8 @@ class BalanceSliderItemTwo extends StatelessWidget {
       child: Column(
         children: [
           // Top Row with manual padding
-          Padding(
-            padding: const EdgeInsets.fromLTRB(12, 22, 0, 0),
+          const Padding(
+            padding: EdgeInsets.fromLTRB(12, 22, 0, 0),
 
           ),
           Divider(height: 4, color: Colors.grey[700]),
@@ -214,7 +202,7 @@ class BalanceSliderItemTwo extends StatelessWidget {
                     text: 'Add Number',
                     onTap: () {
                       print('Clicked on More Info');
-                      // Add your desired functionality here.
+
                     },
                   ),
                 ),
@@ -246,7 +234,7 @@ class BalanceSliderItemTwo extends StatelessWidget {
                 bottomRight: Radius.circular(12),
               ),
             ),
-            child: Center(
+            child: const Center(
             ),
           ),
         ],
@@ -271,7 +259,7 @@ class BalanceColumn extends StatelessWidget {
     required this.bonus,
     required this.buttonLabel,
     required this.onPressed,
-    required this.buttonIcon, // <-- new
+    required this.buttonIcon,
     super.key,
   });
 
@@ -362,7 +350,7 @@ class ClickableColumn extends StatelessWidget {
           const SizedBox(height: 4), // Space between icon and text
           Text(
             text,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 14,
               color: Colors.white, // Text color
               fontWeight: FontWeight.w500,

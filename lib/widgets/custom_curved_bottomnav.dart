@@ -40,11 +40,11 @@ class CurvedBottomNavigationBar extends StatelessWidget {
               child: FloatingActionButton(
                 onPressed: onChatPressed,
                 backgroundColor: Colors.white,
+                mini: true,
                 child: Icon(
                   Icons.chat,
                   color: Colors.yellow[700],
                 ),
-                mini: true,
               ),
             ),
           ],
@@ -95,6 +95,8 @@ class CurvedNavigationClipper extends CustomClipper<Path> {
 }
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -124,11 +126,11 @@ class _MyHomePageState extends State<MyHomePage> {
         selectedIndex: _selectedIndex,
         onTap: _onItemTapped,
         items: [
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: "Home",
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.play_arrow),
             label: "Play",
           ),
@@ -144,11 +146,11 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Icon(Icons.store, color: Colors.black),
             ),
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.help),
             label: "Help",
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.more_horiz),
             label: "More",
           ),

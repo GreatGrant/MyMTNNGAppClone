@@ -17,23 +17,22 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
   final List<Widget> _screens = [
-    HomeScreen(),
-    PlayScreen(),
-    HelpScreen(),
-    MoreScreen(),
+    const HomeScreen(),
+    const PlayScreen(),
+    const HelpScreen(),
+    const MoreScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Your app content
-      body: _screens[_currentIndex],  // This shows the screen corresponding to the selected index
+      body: _screens[_currentIndex],
 
       // The custom bottom navigation bar
       bottomNavigationBar: CurvedNavigationBar(
-        index: _currentIndex,  // Use _currentIndex here
+        index: _currentIndex,
         height: 60.0,
-        items: <Widget>[
+        items: const <Widget>[
           Icon(Icons.home, size: 30),
           Icon(Icons.play_arrow, size: 30),
           Icon(Icons.help, size: 30),
@@ -47,12 +46,12 @@ class _MainScreenState extends State<MainScreen> {
         backgroundColor: Colors.transparent,
         color: Colors.blue,
         buttonBackgroundColor: Colors.blueAccent,
-        animationDuration: Duration(milliseconds: 300),
+        animationDuration: const Duration(milliseconds: 300),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Icon(Icons.add),
         backgroundColor: Colors.blue,
+        child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
