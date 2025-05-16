@@ -99,13 +99,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   items: [
                     PromoItem(
                       title: "TopDeals4Me",
-                      message: "Enjoy 30GB at ₦7,500...",
+                      message: "Double your Data! Enjoy 36GB + EXTRA 36GB Bonus at N11,000 only. Data is valid for 30days",
                       buttonText: "Claim",
                       onButtonPressed: () {},
                     ),
                     PromoItem(
                       title: "SpecialOffer",
-                      message: "Get 10GB for ₦3,000...",
+                      message: "Get 2.5GB for N900. Valid for 2 days.",
                       buttonText: "Claim",
                       onButtonPressed: () {},
                     ),
