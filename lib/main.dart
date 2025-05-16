@@ -16,8 +16,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: const HomeScreen(),
-      theme: buildLightAppTheme(),
+      theme: buildDarkAppTheme(),
       darkTheme: buildDarkAppTheme(),
       themeMode: ThemeMode.system,
     );

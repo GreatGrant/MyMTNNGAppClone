@@ -33,38 +33,40 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBody: true,
-      appBar: _selectedIndex == 0
-          ? const CustomAppBar(
-        userName: "Great Grant",
-        phoneNumber: '08012345678',
-        notificationCount: 2,
-      )
-          : null,drawer: const AppDrawer(),
-      body: _buildBody(),
-      floatingActionButton: FloatingActionButton(
-        shape: const CircleBorder(),
-        backgroundColor: AppColors.yellow700,
-        elevation: 8,
-        onPressed: () {
-          print("Center button tapped");
-        },
-        child: const Icon(Icons.widgets, color: Colors.black),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: CustomBottomNavBar(
-        items: _items,
-        selectedIndex: _selectedIndex,
-        onItemSelected: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-        centerIcon: Icons.widgets,
-        onCenterTap: () {
-          print("Center nav icon tapped");
-        },
+    return SafeArea(
+      child: Scaffold(
+        extendBody: true,
+        appBar: _selectedIndex == 0
+            ? const CustomAppBar(
+          userName: "Great Grant",
+          phoneNumber: '08012345678',
+          notificationCount: 2,
+        )
+            : null,drawer: const AppDrawer(),
+        body: _buildBody(),
+        floatingActionButton: FloatingActionButton(
+          shape: const CircleBorder(),
+          backgroundColor: AppColors.yellow700,
+          elevation: 8,
+          onPressed: () {
+            print("Center button tapped");
+          },
+          child: const Icon(Icons.widgets, color: Colors.black),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: CustomBottomNavBar(
+          items: _items,
+          selectedIndex: _selectedIndex,
+          onItemSelected: (index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
+          centerIcon: Icons.widgets,
+          onCenterTap: () {
+            print("Center nav icon tapped");
+          },
+        ),
       ),
     );
   }
