@@ -28,11 +28,12 @@ flutter:
     - family: MTNBrighterSans
       fonts:
         - asset: assets/fonts/MTNBrighterSans-Regular.ttf
-        - asset: assets/fonts/MTNBrighterSans-Bold.ttf
-        
-4. **Update your theme file `(app_theme.dart)` like this:**
+        - asset: assets/fonts/MTNBrighterSans-Bold.ttf 
+```        
+4 **Update your theme file `(app_theme.dart)` like this:**
 ```yaml
    const kFontFamily = 'MTNBrighterSans';
+   ```
 
 ### 🟡 Logos and Branding
 This project **does not include** any official MTN logos, icons, or branding.  
