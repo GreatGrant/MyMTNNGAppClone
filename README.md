@@ -34,8 +34,6 @@ flutter:
 ```yaml
    const kFontFamily = 'MTNBrighterSans';
 
-
-
 ### 🟡 Logos and Branding
 This project **does not include** any official MTN logos, icons, or branding.  
 Any logo seen in screenshots or local builds is either a **placeholder** or used **only for personal testing purposes** and not meant for public or commercial use.

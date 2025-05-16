@@ -41,8 +41,8 @@ class _HomeScreenState extends State<HomeScreen> {
           userName: "Great Grant",
           phoneNumber: '08012345678',
           notificationCount: 2,
-        )
-            : null,drawer: const AppDrawer(),
+        ) : null,
+        drawer: const AppDrawer(),
         body: _buildBody(),
         floatingActionButton: FloatingActionButton(
           shape: const CircleBorder(),
